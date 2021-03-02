@@ -1,0 +1,24 @@
+<%- include("header")-%>
+  <div class="box" id="heading">
+    <p>
+    <h1><%=day%></h1>
+    </p>
+  </div>
+
+  <div class="box">
+    <% items.forEach(function(item){ %>
+      <form class="del" action="/delete" method="post">
+        <div class="item">
+            <input type="checkbox" name="checkBox" value="<%= item._id %>" onchange="this.form.submit()"> </input>
+            <p><%= item.name%> </p>
+        </div>
+        <input type="hidden" name="listName" value= <%= day %> > </input>
+      </form>
+    <% }); %>
+        <form class="item" action="/" method="post">
+          <input type="text" name="newItem" placeholder="Enter new Todo" autocomplete="off">
+           <button type="submit" name="list" value="<%= day %>">+</button>  <!-- this type method submit will send all the data back to action location and this type can be varied check out btn type html -->
+        </form>
+    </div>
+
+<%- include("footer")-%>
